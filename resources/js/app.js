@@ -4,48 +4,29 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
- require('./bootstrap');
+require('./bootstrap');
 
- window.Vue = require('vue').default;
+window.Vue = require('vue').default;
 
- import Vue from 'vue'
- import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+/**
+ * The following block of code may be used to automatically register your
+ * Vue components. It will recursively scan this directory for the Vue
+ * components and automatically register them with their "basename".
+ *
+ * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
+ */
 
- // Import Bootstrap an BootstrapVue CSS files (order is important)
- import 'bootstrap/dist/css/bootstrap.css'
- import 'bootstrap-vue/dist/bootstrap-vue.css'
+// const files = require.context('./', true, /\.vue$/i)
+// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
- // Make BootstrapVue available throughout your project
- Vue.use(BootstrapVue)
- // Optionally install the BootstrapVue icon components plugin
- Vue.use(IconsPlugin)
- 
- /**
-  * The following block of code may be used to automatically register your
-  * Vue components. It will recursively scan this directory for the Vue
-  * components and automatically register them with their "basename".
-  *
-  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
-  */
+Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
- // const files = require.context('./', true, /\.vue$/i)
- // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
 
- Vue.component('app-banner-component', require('./components/AppBanner.vue').default);
- Vue.component('article-testimonies-component', require('./components/ArticleTestimonies.vue').default);
- Vue.component('navbar-component', require('./components/Navbar.vue').default);
- Vue.component('header-component', require('./components/Header.vue').default);
- Vue.component('footer-component', require('./components/Footer.vue').default);
- Vue.component('services-component', require('./components/Services.vue').default);
- Vue.component('carousel-component', require('./components/Carousel.vue').default);
-
- /**
-  * Next, we will create a fresh Vue application instance and attach it to
-  * the page. Then, you may begin adding components to this application
-  * or customize the JavaScript scaffolding to fit your unique needs.
-  */
-
- const app = new Vue({
-     el: '#app',
-
- });
+const app = new Vue({
+    el: '#app',
+});
